@@ -13,6 +13,7 @@ export const getEntries = {
     addParticipant: async(idExp:string,idPart:string)=>{
         return await experienciasofDB.findByIdAndUpdate(idExp,{$addToSet:{participants:idPart}});
     },
+    
     delParticipant: async(idExp:string,idPart:string)=>{
         return await experienciasofDB.findByIdAndUpdate(idExp,{$pull:{participants:idPart}});
     },
@@ -25,5 +26,12 @@ export const getEntries = {
     },
     delete: async(id:string)=>{
         return await experienciasofDB.findByIdAndDelete(id);
+    },
+    addComentarioToExperiencias: async(idExp:string,idComentario:string)=>{
+        return await experienciasofDB.findByIdAndUpdate(idExp,{$addToSet:{comentarios:idComentario}});
+    },
+
+    delComentarioToExperiencias: async(idExp:string,idComentario:string)=>{
+        return await experienciasofDB.findByIdAndUpdate(idExp,{$pull:{participants:idComentario}});
     }
 }

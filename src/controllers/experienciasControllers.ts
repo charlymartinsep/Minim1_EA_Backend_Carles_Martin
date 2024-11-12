@@ -73,3 +73,23 @@ export async function delParticipantToExperiencias(req:Request,res:Response):Pro
         return res.status(500).json({ e: 'Failed to del participant' });
     }
 }
+
+//Afegir comentari a experiència
+export async function addComentarioToExperiencias(req:Request,res:Response):Promise<Response> {
+    try{
+        const experiencias:experienciasInterface|null = await experienciasServices.getEntries.addComentarioToExperiencias(req.params.idExp,req.params.idPart)
+        return res.json(experiencias);
+    } catch(e){
+        return res.status(500).json({ e: 'Failed to add comment' });
+    }
+}
+
+//Eliminar comentari d'experiència
+export async function delComentarioToExperiencias(req:Request,res:Response):Promise<Response> {
+    try{
+        const experiencias:experienciasInterface|null = await experienciasServices.getEntries.delComentarioToExperiencias(req.params.idExp,req.params.idComentario)
+        return res.json(experiencias);
+    } catch(e){
+        return res.status(500).json({ e: 'Failed to del comment' });
+    }
+}
